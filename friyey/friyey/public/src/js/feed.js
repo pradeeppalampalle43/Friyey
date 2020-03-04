@@ -503,6 +503,7 @@ fetch(url)
   .then(function(res) {
     return res.json();
   })
+  
   .then(function(data) {
     networkDataReceived = true;
     console.log('From web', data);
