@@ -15,6 +15,7 @@ var STATIC_FILES = [
   'src/js/material.min.js',
   'src/css/app.css',
   'src/css/feed.css',
+  'src/js/utility.js',
   'src/images/main-image.jpg',
   'src/css/styles.css',  
   'src/css/globas.css',

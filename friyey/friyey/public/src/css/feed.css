@@ -72,6 +72,8 @@
 
 .photo > img {
   max-width: 100%;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .photo .photo__info {
