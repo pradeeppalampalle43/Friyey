@@ -433,6 +433,7 @@ function createCard(data) {
    cardButton.addEventListener('click',function(){
     
     postComment(data.postId, cardText.value);
+    comment = 'hgjhcjkkkljgk';
     
   }, false); 
    

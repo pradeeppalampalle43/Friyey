@@ -1,133 +1,157 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
 body {
-  margin: 0;
-  padding: 0;
   background: #464855;
-  color: #464855;
-  height: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  font-family: 'Open Sans', sans-serif;
+  
 }
-body #copy {
-  position: absolute;
-  bottom: 0;
-  height: 40px;
-  width: 100%;
-  text-align: center;
-  text-transform: uppercase;
-  line-height: 14px;
-  font-size: 10px;
-  font-weight: 400;
-  z-index: 10;
+
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0rem 0.5rem 2rem 0.5rem rgba(253, 254, 245, 0.1);
+  background-color: #464855;
 }
-body #copy a {
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out 0s;
-}
-body #copy a b {
-  font-weight: 700;
-}
-body #copy a:hover {
-  color: #fff;
-}
-body .mask {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 1;
-  box-shadow: 0 0 500px #000 inset, 0 0 300px #000 inset, 0 0 200px #000 inset;
-}
-body .mask .modal {
-  opacity: 0;
-  width: 300px;
-  height: 320px;
-  background: #3C414A;
-  border-radius: 5px;
-  box-shadow: 0 0 10px #000000, 0 0 0 1px rgba(47, 47, 47, 0.5) inset;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-body .mask .modal .circle {
-  background: #0d0d0d;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  position: relative;
-  left: 50%;
-  overflow: hidden;
-  transform: translate(-50%, -50%);
-  border: solid 2px grey;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover!important;
-}
-body .mask .modal .login h1 {
-  margin: 0;
-  padding: 0;
-  margin-top: -30px;
-  font-family: arial;
+
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
   color: #F9B54A;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  letter-spacing: 1px;
-  text-align: center;
 }
-body .mask .modal .login input {
-  width: 260px;
-  margin-left: 10px;
-  margin-top: 15px;
-  background: rgba(0, 0, 0, 0.3);
-  border: none;
-  outline: none;
-  padding: 10px;
-  font-size: 13px;
-  color: #fff;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px rgba(255, 255, 255, 0.2);
-  -webkit-transition: box-shadow 0.5s ease;
-  -moz-transition: box-shadow 0.5s ease;
-  -o-transition: box-shadow 0.5s ease;
-  -ms-transition: box-shadow 0.5s ease;
-  transition: box-shadow 0.5s ease;
+
+.card-signin .card-body {
+  padding: 2rem;
 }
-body .mask .modal .login input:focus {
-  box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4), 0 1px 1px rgba(255, 255, 255, 0.2);
-}
-body .mask .modal .login button {
-  background: transparent;
-  text-align: center;
-  border: solid 2px #fff;
-  margin: 25px 15px 0;
-  width: 275px;
-  color: #F9B54A;
-  line-height: 25px;
-  border-radius: 20px 20px 20px 20px;
-}
-body .vertical {
-  float: left;
-  width: 10%;
-  overflow: hidden;
-}
-body .vertical .horizontal {
+
+.form-signin {
   width: 100%;
-  height: 150px;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+  background-color: #F9B54A;
+}
+
+.form-label-group {
   position: relative;
-  box-shadow: -1px 1px 0 1px #000000 inset, 0 0 50px rgba(0, 0, 0, 0.5) inset;
-  overflow: hidden;
-  text-align: center;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover!important;
+  margin-bottom: 1rem;
 }
-#logo{
-  width: 120px;
-    height: 120px;
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
 }
-#logintxt{
-  font-weight: 1000;
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+.btn-google {
+  color: white;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+
+@supports (-ms-ime-align: auto) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  html,
+  body {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  html,
+  body {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  html,
+  body {
+    font-size: 16px;
+  }
 }
