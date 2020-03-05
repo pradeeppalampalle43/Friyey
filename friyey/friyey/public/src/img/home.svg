@@ -5,7 +5,7 @@
     </clipPath>
   </defs>
   <g id="home" clip-path="url(#clip-home)">
-    <g id="home-24px_1_" data-name="home-24px (1)" transform="translate(2 1)">
+    <g id="home-24px_1_" data-name="home-24px (1)" transform="translate(2 5)">
       <path id="Path_3" data-name="Path 3" d="M0,0H37V39H0Z" fill="none"/>
       <path id="Path_4" data-name="Path 4" d="M15.085,33.1V23.6h6.826v9.5A1.817,1.817,0,0,0,23.618,35h5.12a1.817,1.817,0,0,0,1.707-1.9v-13.3h2.9a.961.961,0,0,0,.563-1.654L19.642,3.83a1.591,1.591,0,0,0-2.287,0L3.089,18.141a.965.965,0,0,0,.563,1.654h2.9V33.1A1.817,1.817,0,0,0,8.259,35h5.12A1.817,1.817,0,0,0,15.085,33.1Z" transform="translate(0 0)" fill="#fff"/>
     </g>

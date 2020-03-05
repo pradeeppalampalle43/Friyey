@@ -12,7 +12,7 @@ $('#myForm').submit(function(event) {
     console.log(values.pass);
 
     if (values.email == "unmesh.dabhade@gmail.com" && values.pass == "unmesh"){
-        checkIfUserTokenExists();
+        //checkIfUserTokenExists();
         window.location.replace("./index.html");
         
     }
