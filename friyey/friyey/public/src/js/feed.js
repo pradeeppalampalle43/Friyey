@@ -429,9 +429,12 @@ function createCard(data) {
    cardButton.setAttribute('class', 'btn');
    cardButton.textContent = "Post";  
    cardButton.addEventListener('click',function(){
-    
+     //// ---remaining task get username from cache and display 
+    cardFirstComment1.textContent = 'unmesh';
+    cardFirstComment.append(cardFirstComment1);
+    cardFirstComment11.textContent = cardText.value;
+    cardFirstComment.append(cardFirstComment11);
     postComment(data.postId, cardText.value);
-    comment = 'hgjhcjkkkljgk';
     
   }, false); 
    
@@ -591,16 +594,6 @@ function postComment(postIdd, commentpost){
       networkDataReceived = true;
       console.log('From web-----------', data);
       
-      getAllPostsAndUpdatUI();
+      //getAllPostsAndUpdatUI();
     });
-  
-  if ('indexedDB' in window) {
-    readAllData('posts')
-      .then(function(data) {
-        if (!networkDataReceived) {
-          console.log('From cache', data);
-          updateUI(data);
-        }
-      });
-  }
   }
