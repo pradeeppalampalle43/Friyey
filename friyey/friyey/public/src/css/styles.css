@@ -753,8 +753,8 @@ background: #000;
 /* On mouse-over */
 .btn:hover {background: #eee;}
 .describe{
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   padding-top: 20px;
   font-family: "Roboto Slab", "Sans serif";
   font-size: 0.7rem;
