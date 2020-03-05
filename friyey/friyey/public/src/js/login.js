@@ -1,6 +1,6 @@
-$('#myForm').submit(function(e) {
+$('#myForm').submit(function(event) {
     // get all the inputs into an array.
-    e.preventDefault();
+    event.preventDefault();
     var $inputs = $('#myForm :input');
 
     // not sure if you wanted this, but I thought I'd add it.
