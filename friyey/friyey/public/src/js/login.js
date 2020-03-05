@@ -12,15 +12,17 @@ $('#myForm').submit(function(event) {
     console.log(values.pass);
 
     if (values.email == "unmesh.dabhade@gmail.com" && values.pass == "unmesh"){
-        //checkIfUserTokenExists();
+        checkIfUserTokenExists();
         window.location.replace("./index.html");
         
     }
 });
 
 
+
 function checkIfUserTokenExists(){
     var isPresent = false;
+    console.log(readAllData('authentication'));
     if ('indexedDB' in window) {
         readAllData('authentication')
         .then(function(data) {

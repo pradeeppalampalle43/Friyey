@@ -5,6 +5,7 @@ var sharedMomentsArea = document.querySelector('#feed');
 var postId;
 var commentTime;
 
+var sts = 0;
 
 const posts = document.querySelector('.posts');
 
@@ -570,6 +571,8 @@ if ('indexedDB' in window) {
 }
 }
 
+
+
 function postComment(postIdd, commentpost){
 
   var url = 'http://139.59.81.245:8085/spaces/comment/post';    
@@ -586,15 +589,15 @@ function postComment(postIdd, commentpost){
         'Content-Type': 'application/json'
     })
   });
-    var networkDataReceived = false;
+  var networkDataReceived = false;
   fetch(request)
     .then(function(res) {
-      return res.json();
+      return res.status;
     })
-    .then(function(data) {
+    .then(function(status) {
       networkDataReceived = true;
-      console.log('From web-----------', data);
-      
-      //getAllPostsAndUpdatUI();
-    });
+      console.log('status----------', status);
+      sts = status;
+      console.log('===============', sts);
+    }); 
   }
