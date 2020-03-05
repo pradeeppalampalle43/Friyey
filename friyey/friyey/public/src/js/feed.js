@@ -7,7 +7,7 @@ var commentTime;
 
 
 
-
+var any = '';
 const posts = document.querySelector('.posts');
 
 
