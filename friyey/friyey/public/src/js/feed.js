@@ -430,6 +430,7 @@ function createCard(data) {
    cardButton.textContent = "Post";  
    cardButton.addEventListener('click',function(){
      //// ---remaining task get username from cache and display 
+     //// also need to check if post online successful, if not then UI should not update
     cardFirstComment1.textContent = 'unmesh';
     cardFirstComment.append(cardFirstComment1);
     cardFirstComment11.textContent = cardText.value;
