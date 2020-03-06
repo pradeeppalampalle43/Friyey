@@ -77,7 +77,7 @@ function showCard1(data) {
   
   var cardProfile = document.createElement('img');   // Create an <img> element.  
   cardProfile.className = 'photo__avatar';
-  cardProfile.src = './img/profile_image.png';
+  cardProfile.src = "./src/images/favicon.png";
   cardProfile.style.backgroundImage;  
   cardHeaderColumn.append(cardProfile);
   cardHeader.append(cardHeaderColumn);
@@ -115,12 +115,15 @@ function showCard1(data) {
   cardWrapper.append(cardHeader); 
 
 
+
+  if(data.images[0].match(/\.(jpeg|jpg|gif|png)$/) != null)
+  {
   var cardImage = document.createElement('img');   // Create an <img> element.  
   cardImage.className = 'photo__file-container'; 
   cardImage.src = data.images[0];
   cardImage.style.backgroundImage;  
   cardWrapper.appendChild(cardImage);
-  
+  }
 
   
 
@@ -282,7 +285,7 @@ function createCard(data) {
   
   var cardProfile = document.createElement('img');   // Create an <img> element.  
   cardProfile.className = 'photo__avatar';
-  cardProfile.src = './img/profile_image.png';
+  cardProfile.src = "./src/images/favicon.png";
   cardProfile.style.backgroundImage;  
   cardHeaderColumn.append(cardProfile);
   cardHeader.append(cardHeaderColumn);
@@ -319,8 +322,9 @@ function createCard(data) {
 
   cardWrapper.append(cardHeader); 
 
-
-  var cardImage = document.createElement('img');   // Create an <img> element.  
+  if(data.images[0].match(/\.(jpeg|jpg|gif|png)$/) != null)
+  {
+    var cardImage = document.createElement('img');   // Create an <img> element.  
   cardImage.className = 'photo__file-container'; 
   cardImage.src = data.images[0];
   cardImage.style.backgroundImage;  
@@ -331,6 +335,10 @@ function createCard(data) {
     postDetailsFetch();
     myFun();
   }, false);
+  
+    
+  }
+
   
 
  
@@ -347,6 +355,12 @@ function createCard(data) {
    cardDescribe.setAttribute('class', 'describe');
    cardDescribe.textContent = "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longerThis is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"; 
    cardWrapper.appendChild(cardDescribe);
+   cardDescribe.addEventListener('click',function(){
+    console.log("--------------postid-->",data.postId);
+    setPostId(data.postId);
+    postDetailsFetch();
+    myFun();
+  }, false);
 
 
 

@@ -824,3 +824,27 @@ background: #000;
 #a{
   margin-top:0; padding-top:0;
 }
+#form-control{
+  margin-left: 15%;
+  margin-right: 15%;
+  text-align: center;
+}
+.btn{
+color:black;  
+background-color: grey;
+float: left;
+margin-left: 40%;
+}
+#form-describe{
+  
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 31px 31px 31px 31px;
+  -moz-border-radius: 31px 31px 31px 31px;
+  -webkit-border-radius: 31px 31px 31px 31px;
+  border: 1px solid #000000;
+  text-align: center;
+  padding-bottom: 20px;
+  
+
+}
