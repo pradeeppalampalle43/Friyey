@@ -757,7 +757,8 @@ background: #000;
   padding-left: 12px;
   padding-right: 12px;
   padding-top: 20px;
-  font-family: "Roboto Slab", "Sans serif";
+  font-family: "Roboto Slab";
+  font-weight: 700;
   font-size: 0.7rem;
 }
 .commentcount{

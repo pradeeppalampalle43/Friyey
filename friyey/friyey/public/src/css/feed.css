@@ -99,6 +99,7 @@
   display: block;
 }
 
+
 .photo .photo__add-comment-container {
   margin-top: 15px;
   border-top: 1px solid #e6e6e6;
@@ -183,6 +184,12 @@
   font-weight: 600;
   margin-bottom: 5px;
 }
+
+.photo_location{
+  display: block;
+  font-weight: bold;
+}
+
 
 .photo__file{
   max-width: 100%;

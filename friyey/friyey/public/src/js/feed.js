@@ -77,7 +77,7 @@ function showCard1(data) {
   
   var cardProfile = document.createElement('img');   // Create an <img> element.  
   cardProfile.className = 'photo__avatar';
-  cardProfile.src = data.images[0];
+  cardProfile.src = './img/profile_image.png';
   cardProfile.style.backgroundImage;  
   cardHeaderColumn.append(cardProfile);
   cardHeader.append(cardHeaderColumn);
@@ -282,7 +282,7 @@ function createCard(data) {
   
   var cardProfile = document.createElement('img');   // Create an <img> element.  
   cardProfile.className = 'photo__avatar';
-  cardProfile.src = data.images[0];
+  cardProfile.src = './img/profile_image.png';
   cardProfile.style.backgroundImage;  
   cardHeaderColumn.append(cardProfile);
   cardHeader.append(cardHeaderColumn);
@@ -315,7 +315,7 @@ function createCard(data) {
   // cardBookmark1.src = data.images[0];
   // cardBookmark1.style.backgroundImage;  
   // cardBookmark.append(cardBookmark1);
-  cardHeader.append(cardBookmark);
+  cardHeader.append(cardBookmark);  
 
   cardWrapper.append(cardHeader); 
 
@@ -432,12 +432,10 @@ function createCard(data) {
    cardButton.addEventListener('click',function(){
      //// ---remaining task get username from cache and display 
      //// also need to check if post online successful, if not then UI should not update
-    cardFirstComment1.textContent = 'unmesh';
-    cardFirstComment.append(cardFirstComment1);
-    cardFirstComment11.textContent = cardText.value;
-    cardFirstComment.append(cardFirstComment11);
-    postComment(data.postId, cardText.value);
     
+    postComment(data.postId, cardText.value, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText);
+    console.log('----------------any----------------',any);
+    console.log('----------------sts----------------',sts);
   }, false); 
    
    cardComment.append(cardText); 
@@ -500,6 +498,8 @@ function updateUI1(data) {
 }
 
 function getAllPostsAndUpdatUI(){
+
+  //checkIfUserTokenExists();
   var url = 'http://139.59.81.245:8085/spaces/post/get/all';  
 
 var networkDataReceived = false;
@@ -571,9 +571,24 @@ if ('indexedDB' in window) {
 }
 }
 
+function checkIfUserTokenExists(){
+  
+  console.log(readAllData('authentication'));
+  if ('indexedDB' in window) {
+      readAllData('authentication')
+      .then(function(data) {
+          console.log('-----------------------------From cache', data.length);
+          //console.log(data.length);
+          // if (data.length == 0){
+          //   window.location.replace("./login.html");
+          // }
+          // else getAllPostsAndUpdatUI();
+      });
+  }
+}
+  
 
-
-function postComment(postIdd, commentpost){
+async function postComment(postIdd, commentpost, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText){
 
   var url = 'http://139.59.81.245:8085/spaces/comment/post';    
   const ps = {
@@ -597,7 +612,13 @@ function postComment(postIdd, commentpost){
     .then(function(status) {
       networkDataReceived = true;
       console.log('status----------', status);
-      sts = status;
-      console.log('===============', sts);
+      cardFirstComment1.textContent = 'siddhesh';
+      cardFirstComment.append(cardFirstComment1);
+      cardFirstComment11.textContent = commentpost;
+      cardFirstComment.append(cardFirstComment11);
+      cardText.value = '';
+
+      console.log('Successful Update');
+      
     }); 
   }
