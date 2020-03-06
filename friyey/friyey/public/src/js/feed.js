@@ -499,7 +499,7 @@ function updateUI1(data) {
 
 function getAllPostsAndUpdatUI(){
 
-  //checkIfUserTokenExists();
+  checkIfUserTokenExists();
   var url = 'http://139.59.81.245:8085/spaces/post/get/all';  
 
 var networkDataReceived = false;

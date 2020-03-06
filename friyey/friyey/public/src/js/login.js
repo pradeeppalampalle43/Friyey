@@ -88,8 +88,24 @@ function login(userName, password){
         }
         else if (!data.isInitialLogin){
             console.log(data);
-            createDatabase();
-            writeData('authentication', data);
+            var db;
+         var request = window.indexedDB.open("post-store", 1);
+         
+         request.onerror = function(event) {
+            console.log("error: ");
+         };
+         
+         request.onsuccess = function(event) {
+            db = request.result;
+            console.log("success: "+ db);
+            add(db, data);
+         };
+         
+         request.onupgradeneeded = function(event) {
+            var db = event.target.result;
+            var objectStore = db.createObjectStore("authentication", {keyPath: "jwttoken"});
+            
+         }
             console.log('data written to db');
         }
         console.log(data);
@@ -97,15 +113,16 @@ function login(userName, password){
     });
 }
 
-function createDatabase(){
-
-
-var dbPromise = idb.open('posts-store', 1, function (db) {
-    if (!db.objectStoreNames.contains('posts')) {
-      db.createObjectStore('posts', {keyPath: 'postId'});
+function add(db, data) {
+    var request = db.transaction(["authentication"], "readwrite")
+    .objectStore("authentication")
+    .add(data);
+    
+    request.onsuccess = function(event) {
+       alert("Kenny has been added to your database.");
+    };
+    
+    request.onerror = function(event) {
+       alert("Unable to add data\r\nKenny is aready exist in your database! ");
     }
-    if (!db.objectStoreNames.contains('authentication')) {
-      db.createObjectStore('authentication', {keyPath: 'jwttoken'});
-    }
-  });
-}
+ }
