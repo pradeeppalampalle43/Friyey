@@ -4,7 +4,7 @@ var dbPromise = idb.open('posts-store', 1, function (db) {
     db.createObjectStore('posts', {keyPath: 'postId'});
   }
   if (!db.objectStoreNames.contains('authentication')) {
-    db.createObjectStore('authentication', {keyPath: 'email'});
+    db.createObjectStore('authentication', {keyPath: 'jwttoken'});
   }
 });
 
