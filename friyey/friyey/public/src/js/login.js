@@ -1,3 +1,5 @@
+
+
 $('#myForm').submit(function(event) {
     // get all the inputs into an array.
     event.preventDefault();
@@ -24,6 +26,7 @@ $('#myForm').submit(function(event) {
 
 
 function checkIfUserTokenExists(){
+    
     var isPresent = false;
     console.log(readAllData('authentication'));
     if ('indexedDB' in window) {
@@ -31,6 +34,9 @@ function checkIfUserTokenExists(){
         .then(function(data) {
             console.log('From cache', data);
             //console.log(data.length);
+            if(data.jwttoken){
+                window.location.replace("./index.html");
+            }
         });
     }
 }
@@ -38,9 +44,10 @@ function checkIfUserTokenExists(){
 
 
 function login(userName, password){
+    //checkIfUserTokenExists();
     var url = 'http://139.59.81.245:8085/spaces/user/login';  
     const ps = {
-        userName : userName,
+        username : userName,
         password : password
     };
     console.log(ps);
@@ -52,31 +59,53 @@ function login(userName, password){
     })
     });
     var networkDataReceived = false;
+    
     fetch(request)
-    .then(function(res) {
-        return res;
+    .then(function(res) {  
+        return res.json();
     })
-    .then(function(res) {
+    .then(function(data) {
         networkDataReceived = true;
-        if(res.ok){
-            if(res.json.isInitialLogin == true){
-                //open reset password new user
-                console.log('Its initial login');
-                window.location.replace("./reset_password.html");
-            }
-            else if (res.json.isInitialLogin == false){
-                //store stoken and open index.html
-                writeData('authentication', res.json);
-                window.location.replace("./index.html");
-            }
-        }else {
-            console.log('From web-----------Not ok');
+        // if(res.ok){
+        //     console.log(res.json());
+        //     if(res.json().isInitialLogin == true){
+        //         //open reset password new user
+        //         console.log('Its initial login');
+        //         window.location.replace("./reset_password.html");
+        //     }
+        //     else if (res.json.isInitialLogin == false){
+        //         //store stoken and open index.html
+        //         writeData('authentication', res.json);
+        //         window.location.replace("./index.html");
+        //     }
+        // }else {
+        //     console.log('From web-----------Not ok');
+        // }
+        if (data.isInitialLogin){
+            console.log('Hhhhhhhhhhhhhhh');
+            console.log('Its initial login');
+            window.location.replace("./reset_pasword.html");
         }
-        
+        else if (!data.isInitialLogin){
+            console.log(data);
+            createDatabase();
+            writeData('authentication', data);
+            console.log('data written to db');
+        }
+        console.log(data);
         
     });
 }
 
-    
+function createDatabase(){
 
-    
+
+var dbPromise = idb.open('posts-store', 1, function (db) {
+    if (!db.objectStoreNames.contains('posts')) {
+      db.createObjectStore('posts', {keyPath: 'postId'});
+    }
+    if (!db.objectStoreNames.contains('authentication')) {
+      db.createObjectStore('authentication', {keyPath: 'jwttoken'});
+    }
+  });
+}
