@@ -499,7 +499,7 @@ function updateUI1(data) {
 
 function getAllPostsAndUpdatUI(){
 
-  checkIfUserTokenExists();
+  //checkIfUserTokenExists();
   var url = 'http://139.59.81.245:8085/spaces/post/get/all';  
 
 var networkDataReceived = false;
@@ -530,8 +530,8 @@ if ('indexedDB' in window) {
 }
 
 }
+checkIfUserTokenExists();
 
-getAllPostsAndUpdatUI();
 
 function postDetailsFetch(){
 
@@ -577,12 +577,14 @@ function checkIfUserTokenExists(){
   if ('indexedDB' in window) {
       readAllData('authentication')
       .then(function(data) {
-          console.log('-----------------------------From cache', data.length);
-          //console.log(data.length);
-          // if (data.length == 0){
-          //   window.location.replace("./login.html");
-          // }
-          // else getAllPostsAndUpdatUI();
+          console.log('-----------------------------From cache', data);
+          console.log(data.length);
+          //console.log(data[0].jwttoken);
+          if (data.length == 0){
+            window.location.replace("./login.html");
+          }else{
+            getAllPostsAndUpdatUI();
+          }
       });
   }
 }

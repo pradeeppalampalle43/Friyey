@@ -89,7 +89,7 @@ function login(userName, password){
         else if (!data.isInitialLogin){
             console.log(data);
             var db;
-         var request = window.indexedDB.open("post-store", 1);
+         var request = window.indexedDB.open("posts-store", 1);
          
          request.onerror = function(event) {
             console.log("error: ");
@@ -119,7 +119,7 @@ function add(db, data) {
     .add(data);
     
     request.onsuccess = function(event) {
-       alert("Kenny has been added to your database.");
+        window.location.replace("./index.html");
     };
     
     request.onerror = function(event) {
