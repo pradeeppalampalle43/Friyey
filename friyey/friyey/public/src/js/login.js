@@ -66,6 +66,12 @@ function login(userName, password){
     })
     .then(function(data) {
         networkDataReceived = true;
+        console.log(data.errorResponse[0].errorCode);
+        if (data.errorResponse[0].errorCode == '403 FORBIDDEN'){
+            alert("Email Or Password Incorrect, Please try again..!");
+            window.location.replace("./login.html");
+        }
+        
         // if(res.ok){
         //     console.log(res.json());
         //     if(res.json().isInitialLogin == true){
@@ -81,7 +87,7 @@ function login(userName, password){
         // }else {
         //     console.log('From web-----------Not ok');
         // }
-        if (data.isInitialLogin){
+        else if (data.isInitialLogin){
             console.log('Hhhhhhhhhhhhhhh');
             console.log('Its initial login');
             window.location.replace("./reset_pasword.html");

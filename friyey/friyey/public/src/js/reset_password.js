@@ -24,6 +24,7 @@ $('#reset_pass_form').submit(function(event) {
     }else{
         //new password and confrim password doesn't match
         console.log('new password and confirm password does not match');
+        alert("new password and confirm password does not match..!");
     }
 });
 
