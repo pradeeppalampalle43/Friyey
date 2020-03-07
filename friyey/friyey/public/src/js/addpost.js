@@ -10,17 +10,30 @@ $(document).ready(function () {
 
         //stop submit the form, we will post it manually.
         event.preventDefault();
-
-        var $inputs = $('#fileUploadForm :input');
+        var email;
+        readAllData('authentication')
+        .then(function(data) {
+            console.log('From cache', data);
+            //console.log(data.length);
+            email=data[0].email;
+            var $inputs = $('#fileUploadForm :input');
 
         var values = {};
         $inputs.each(function() {
         values[this.name] = $(this).val();
         });
-        console.log(values);
+        //console.log(values.length);
         console.log(values.files);
+        console.log(values.title);
 
-        // Get form
+        if (values.title == ''){
+            
+            alert("Title can not be empty");
+        }else if(values.description == '' && values.imagepost == ''){
+            alert("Description and Image, both can not be empty.");
+        }
+        else{
+        
         
         var form = $('#fileUploadForm')[0];
 
@@ -31,8 +44,21 @@ $(document).ready(function () {
         var formDdata=document.getElementById('input').files[0];
         // If you want to add an extra field for the FormData
         data.append("file", formDdata);
-        data.append("postRequest", "{\n  \"companyName\": \"Audi\",\n  \"title\": \"Autocad\",\n  \"category\": \"job\",\n  \"description\": \"job\",\n  \"phone\": \"9359606353\",\n  \"emailId\": \"siddhesh@gmail.com\"\n}");
 
+        // data.append("postRequest", {"title" : values.title});
+        // data.append("postRequest", {"description" : values.description});
+        // data.append("postRequest", {"emailId": values.emailId});
+        
+        
+        
+        console.log('From cache', email);
+        var dt = {"title": values.title,
+                  "description" : values.description,
+                  "emailId" : email                         
+            }
+        //data.append("postRequest", "{\n  \"companyName\": \"Audi\",\n  \"title\": ${values.title},\n  \"category\": \"job\",\n  \"description\": ${values.description},\n  \"phone\": \"9359606353\",\n  \"emailId\": \"siddhesh@gmail.com\"\n}");
+        data.append("postRequest", JSON.stringify(dt));
+        console.log(dt);
 
         console.log(data);
 		// disabled the submit button
@@ -51,6 +77,7 @@ $(document).ready(function () {
 
                 //$("#result").text(data);
                 console.log("SUCCESS : ", data);
+               window.location.replace("./index.html");
                 $("#btnSubmit").prop("disabled", false);
 
             },
@@ -62,6 +89,13 @@ $(document).ready(function () {
 
             }
         });
+    }
+            
+            
+        });
+
+
+        
 
     });
 

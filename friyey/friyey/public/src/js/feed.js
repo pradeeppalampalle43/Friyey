@@ -132,13 +132,14 @@ function showCard1(data) {
 
    var cardComment = document.createElement('div');
    cardComment.className = 'photo__add-comment-container'; 
-
+  if(data.description!=""){
+    
    var cardDescribe = document.createElement('div');
    cardDescribe.setAttribute('class', 'describe');
-   cardDescribe.textContent = "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longerThis is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"; 
+   cardDescribe.textContent = data.description; 
    cardWrapper.appendChild(cardDescribe);
   // console.log('--------------------length---------------------->', data.comments.length);
-
+  }
     if (data.comments != null){
     for(var  i = 0; i < data.comments.length; i++ ){
       
@@ -353,9 +354,11 @@ function createCard(data) {
    var cardComment = document.createElement('div');
    cardComment.className = 'photo__add-comment-container'; 
 
+   if(data.description!='')
+   {  
    var cardDescribe = document.createElement('div');
    cardDescribe.setAttribute('class', 'describe');
-   cardDescribe.textContent = "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longerThis is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"; 
+   cardDescribe.textContent = data.description; 
    cardWrapper.appendChild(cardDescribe);
    cardDescribe.addEventListener('click',function(){
     console.log("--------------postid-->",data.postId);
@@ -364,7 +367,7 @@ function createCard(data) {
     myFun();
   }, false);
 
-
+}
 
   //  <ul class="photo__comments">
   //                       <li class="photo__comment">
@@ -419,7 +422,10 @@ function createCard(data) {
 
    var cardCommentCount = document.createElement('div');
    cardCommentCount.setAttribute('class', 'commentcount');
+
+   
    cardCommentCount.textContent = commentCountText; 
+   var cardWrapper1=cardWrapper;
    cardWrapper.appendChild(cardCommentCount);
 
    var diff = getDateDiffernce(data.time);
@@ -449,9 +455,8 @@ function createCard(data) {
      //// ---remaining task get username from cache and display 
      //// also need to check if post online successful, if not then UI should not update
     
-    postComment(data.postId, cardText.value, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText);
-    console.log('----------------any----------------',any);
-    console.log('----------------sts----------------',sts);
+    postComment(data.postId, cardText.value, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, data.commentCnt, cardWrapper);
+   
   }, false); 
    
    cardComment.append(cardText); 
@@ -605,8 +610,7 @@ function checkIfUserTokenExists(){
   }
 }
   
-
-async function postComment(postIdd, commentpost, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText){
+function postComment(postIdd, commentpost, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, commentCnt, cardWrapper){
 
   var url = 'http://139.59.81.245:8085/spaces/comment/post';    
   const ps = {
@@ -630,13 +634,41 @@ async function postComment(postIdd, commentpost, cardFirstComment1, cardFirstCom
     .then(function(status) {
       networkDataReceived = true;
       console.log('status----------', status);
+      var commentCountText = '';
+      commentCnt=commentCnt+1;
+  if (commentCnt == 1){
+    commentCountText = '1 Comment';
+  } else commentCountText = commentCnt + ' Comments';
+
+   cardCommentCount.textContent = commentCountText;    
+  
+
       cardFirstComment1.textContent = 'siddhesh';
       cardFirstComment.append(cardFirstComment1);
       cardFirstComment11.textContent = commentpost;
       cardFirstComment.append(cardFirstComment11);
       cardText.value = '';
 
+
+     
+  
+
+      console.log(commentCnt);
+
+  //     var commentCountText = '';
+  // if (commentCnt == 1){
+  //   commentCountText = '1 Comment';
+  // } else commentCountText = commentCnt + ' Comments';
+
+  // cardCommentCount.textContent = commentCountText; 
+ 
+  // cardWrapper1.appendChild(cardCommentCount);
+   
+
+
       console.log('Successful Update');
       
     }); 
   }
+
+ 

@@ -114,9 +114,11 @@ function login(userName, password){
             var db = event.target.result;
             var objectStore = db.createObjectStore("authentication", {keyPath: "jwttoken"});
             
+            
          }
             console.log('data written to db');
         }
+        //data.append({email : userName});
         console.log(data);
         
     });
@@ -132,6 +134,6 @@ function add(db, data) {
     };
     
     request.onerror = function(event) {
-       alert("Unable to add data\r\nKenny is aready exist in your database! ");
+       alert("Error! ");
     }
  }
