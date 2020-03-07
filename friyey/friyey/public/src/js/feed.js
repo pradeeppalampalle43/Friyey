@@ -102,8 +102,8 @@ function showCard1(data,userName,email) {
   cardHeaderColumn.append(cardUser1);  
   cardHeader.append(cardHeaderColumn);
 
-  var cardBookmark = document.createElement('div');
-  cardBookmark.className = 'bookmark';
+  // var cardBookmark = document.createElement('div');
+  // cardBookmark.className = 'bookmark';
 
   // var cardBookmark1 = document.createElement('img');
   // cardBookmark1.className = 'photo__avatar1';   // Create an <img> element.  
@@ -111,9 +111,9 @@ function showCard1(data,userName,email) {
   // cardBookmark1.src = data.images[0];
   // cardBookmark1.style.backgroundImage;  
   // cardBookmark.append(cardBookmark1);
-  cardHeader.append(cardBookmark);
+  // cardHeader.append(cardBookmark);
 
-  cardWrapper.append(cardHeader); 
+  // cardWrapper.append(cardHeader); 
 
   if(data.images[0].match(/\.(jpeg|jpg|gif|png)$/) != null)
   {
@@ -319,8 +319,8 @@ function createCard(data,userName,email) {
   cardHeaderColumn.append(cardUser1);  
   cardHeader.append(cardHeaderColumn);
 
-  var cardBookmark = document.createElement('div');
-  cardBookmark.className = 'bookmark';
+  // var cardBookmark = document.createElement('div');
+  // cardBookmark.className = 'bookmark';
 
   // var cardBookmark1 = document.createElement('img');
   // cardBookmark1.className = 'photo__avatar1';   // Create an <img> element.  
@@ -328,7 +328,7 @@ function createCard(data,userName,email) {
   // cardBookmark1.src = data.images[0];
   // cardBookmark1.style.backgroundImage;  
   // cardBookmark.append(cardBookmark1);
-  cardHeader.append(cardBookmark);  
+  // cardHeader.append(cardBookmark);  
 
   cardWrapper.append(cardHeader); 
 

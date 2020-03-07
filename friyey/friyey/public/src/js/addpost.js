@@ -35,7 +35,7 @@ $(document).ready(function () {
         else{
         
         
-        var form = $('#fileUploadForm')[0];
+        form = $('#fileUploadForm')[0];
 
 		// Create an FormData object 
         var data = new FormData(form);
