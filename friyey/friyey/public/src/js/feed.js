@@ -62,8 +62,9 @@ console.log(seconds);
    return commentTime;
 }
 
-function showCard1(data) {
+function showCard1(data,userName,email) {
   console.log('Inside show card Post_details');
+  console.log(userName,email);
   
   var cardWrapper = document.createElement('section');
   cardWrapper.className = 'photo'; 
@@ -190,7 +191,15 @@ function showCard1(data) {
    var cardButton = document.createElement('button');
    cardButton.setAttribute('type', 'button');
    cardButton.setAttribute('class', 'btn');
-   cardButton.textContent = "Post";   
+   cardButton.textContent = "Post";  
+   
+   cardButton.addEventListener('click',function(){
+    //// ---remaining task get username from cache and display 
+    //// also need to check if post online successful, if not then UI should not update
+   
+   postComment1(email, userName, data.postId, cardText.value, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, data.commentCnt, cardWrapper);
+  
+ }, false); 
    
    cardComment.append(cardText); 
    cardComment.append(cardButton);
@@ -273,7 +282,7 @@ function clearCards() {
 
 
 
-function createCard(data) {
+function createCard(data,userName,email) {
   var cardWrapper = document.createElement('section');
   cardWrapper.className = 'photo'; 
   
@@ -334,7 +343,7 @@ function createCard(data) {
   cardImage.addEventListener('click',function(){
     console.log("--------------postid-->",data.postId);
     setPostId(data.postId);
-    postDetailsFetch();
+    postDetailsFetch(data,userName,email);
     myFun();
   }, false);
   }
@@ -363,7 +372,7 @@ function createCard(data) {
    cardDescribe.addEventListener('click',function(){
     console.log("--------------postid-->",data.postId);
     setPostId(data.postId);
-    postDetailsFetch();
+    postDetailsFetch(data,email,userName);
     myFun();
   }, false);
 
@@ -386,7 +395,7 @@ function createCard(data) {
     comment = '';
   }
   else{
-    commentUserName = data.comments[0].userName;
+    commentUserName =data.comments[0].userName;
     comment = data.comments[0].comment;
   }
 
@@ -455,7 +464,7 @@ function createCard(data) {
      //// ---remaining task get username from cache and display 
      //// also need to check if post online successful, if not then UI should not update
     
-    postComment(data.postId, cardText.value, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, data.commentCnt, cardWrapper);
+    postComment(email, userName, data.postId, cardText.value, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, data.commentCnt, cardWrapper);
    
   }, false); 
    
@@ -494,7 +503,7 @@ function myFun(){
 
 
 
-function updateUI(data) {
+function updateUI(data,userName,email) {
   clearCards();
   // for (var key in data){
   //   console.log('un---', data[key]);
@@ -506,19 +515,20 @@ function updateUI(data) {
     
     for(var j=0; j<data[i].length; j++)
     {
-    createCard(data[i][j]);
+    createCard(data[i][j],userName,email);
     }
     
   }
   
 }
 
-function updateUI1(data) {
+function updateUI1(data,userName,email) {
   clearCards();
-  showCard1(data);  
+  console.log(userName,email);
+  showCard1(data,userName,email);  
 }
 
-function getAllPostsAndUpdatUI(){
+function getAllPostsAndUpdatUI(userName,email){
 
   //checkIfUserTokenExists();
   var url = 'http://139.59.81.245:8085/spaces/post/get/all';  
@@ -537,7 +547,7 @@ fetch(url)
       
       dataArray.push(data[key]);
     }
-    updateUI(dataArray);
+    updateUI(dataArray,userName,email);
   });
 
 if ('indexedDB' in window) {
@@ -545,7 +555,7 @@ if ('indexedDB' in window) {
     .then(function(data) {
       if (!networkDataReceived) {
         console.log('From cache', data);
-        updateUI(data);
+        updateUI(data,userName,email);
       }
     });
 }
@@ -554,7 +564,7 @@ if ('indexedDB' in window) {
 checkIfUserTokenExists();
 
 
-function postDetailsFetch(){
+function postDetailsFetch(data,userName,email){
 
 var url = 'http://139.59.81.245:8085/spaces/post/get';  
 var postIdd = getPostId();
@@ -577,8 +587,9 @@ fetch(request)
   .then(function(data) {
     networkDataReceived = true;
     console.log('From web-----------', data);
+
     
-    updateUI1(data);
+    updateUI1(data,userName,email);
   });
 
 if ('indexedDB' in window) {
@@ -586,7 +597,7 @@ if ('indexedDB' in window) {
     .then(function(data) {
       if (!networkDataReceived) {
         console.log('From cache', data);
-        updateUI1(data);
+        updateUI1(data,userName,email);
       }
     });
 }
@@ -604,18 +615,18 @@ function checkIfUserTokenExists(){
           if (data.length == 0){
             window.location.replace("./login.html");
           }else{
-            getAllPostsAndUpdatUI();
+            getAllPostsAndUpdatUI(data[0].userName, data[0].email);
           }
       });
   }
 }
   
-function postComment(postIdd, commentpost, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, commentCnt, cardWrapper){
+function postComment(email, userName,postIdd, commentpost, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, commentCnt, cardWrapper){
 
   var url = 'http://139.59.81.245:8085/spaces/comment/post';    
   const ps = {
     postId : postIdd,
-    emailId : "siddhesh@gmail.com",
+    emailId : email,
     comment : commentpost
   };
   console.log(ps);
@@ -629,21 +640,21 @@ function postComment(postIdd, commentpost, cardFirstComment1, cardFirstComment11
   var networkDataReceived = false;
   fetch(request)
     .then(function(res) {
-      return res.status;
+      return res.json();
     })
-    .then(function(status) {
+    .then(function(data) {
       networkDataReceived = true;
-      console.log('status----------', status);
+      console.log('status----------', data);
       var commentCountText = '';
-      commentCnt=commentCnt+1;
+     commentCnt= data.commentCnt;
   if (commentCnt == 1){
     commentCountText = '1 Comment';
   } else commentCountText = commentCnt + ' Comments';
 
    cardCommentCount.textContent = commentCountText;    
   
-
-      cardFirstComment1.textContent = 'siddhesh';
+      console.log(userName,email,commentpost);
+      cardFirstComment1.textContent = userName;
       cardFirstComment.append(cardFirstComment1);
       cardFirstComment11.textContent = commentpost;
       cardFirstComment.append(cardFirstComment11);
@@ -670,5 +681,69 @@ function postComment(postIdd, commentpost, cardFirstComment1, cardFirstComment11
       
     }); 
   }
+
+  function postComment1(email, userName,postIdd, commentpost, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, commentCnt, cardWrapper){
+
+    var url = 'http://139.59.81.245:8085/spaces/comment/post';    
+    const ps = {
+      postId : postIdd,
+      emailId : email,
+      comment : commentpost
+    };
+    console.log(ps);
+    const request = new Request(url, {
+      method: 'POST',
+      body: JSON.stringify(ps),
+      headers: new Headers({
+          'Content-Type': 'application/json'
+      })
+    });
+    var networkDataReceived = false;
+    fetch(request)
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(data) {
+        networkDataReceived = true;
+        console.log('status----------', data);
+        var commentCountText = '';
+       commentCnt= data.commentCnt;
+    if (commentCnt == 1){
+      commentCountText = '1 Comment';
+    } else commentCountText = commentCnt + ' Comments';
+  
+     cardCommentCount.textContent = commentCountText;    
+    
+        console.log(userName,email,commentpost);
+        cardFirstComment1.textContent = userName;
+        cardFirstComment.append(cardFirstComment1);
+        cardFirstComment11.textContent = commentpost;
+        cardFirstComment.append(cardFirstComment11);
+        cardText.value = '';
+  
+  
+       
+    
+  
+        console.log(commentCnt);
+  
+    //     var commentCountText = '';
+    // if (commentCnt == 1){
+    //   commentCountText = '1 Comment';
+    // } else commentCountText = commentCnt + ' Comments';
+  
+    // cardCommentCount.textContent = commentCountText; 
+   
+    // cardWrapper1.appendChild(cardCommentCount);
+    postDetailsFetch(data,userName,email);
+     
+
+  
+        console.log('Successful Update');
+        
+      }); 
+    }
+  
+   
 
  
