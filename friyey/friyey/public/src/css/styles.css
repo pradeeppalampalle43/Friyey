@@ -81,6 +81,7 @@ nav .sidenav-trigger{
 input{
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
+  
 }
 .side-form button{
   background: var(--title);
@@ -839,12 +840,37 @@ margin-left: 40%;
   
   width: 90%;
   margin-left: 5%;
-  border-radius: 31px 31px 31px 31px;
-  -moz-border-radius: 31px 31px 31px 31px;
-  -webkit-border-radius: 31px 31px 31px 31px;
-  border: 1px solid #000000;
+  border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 1px solid lightgrey;
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   
 
+}
+.container{
+  margin-top:20px;
+}
+.image-preview-input {
+  position: relative;
+overflow: hidden;
+margin: 0px;    
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+position: absolute;
+top: 0;
+right: 0;
+margin: 0;
+padding: 0;
+font-size: 20px;
+cursor: pointer;
+opacity: 0;
+filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+  margin-left:2px;
 }
