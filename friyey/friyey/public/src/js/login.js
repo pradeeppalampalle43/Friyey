@@ -66,11 +66,14 @@ function login(userName, password){
     })
     .then(function(data) {
         networkDataReceived = true;
-        console.log(data.errorResponse[0].errorCode);
-        if (data.errorResponse[0].errorCode == '403 FORBIDDEN'){
-            alert("Email Or Password Incorrect, Please try again..!");
-            window.location.replace("./login.html");
+        
+        if (data.errorResponse){
+            if (data.errorResponse[0].errorCode == '403 FORBIDDEN'){
+                alert("Email Or Password Incorrect, Please try again..!");
+                window.location.replace("./login.html");
+            }
         }
+        
         
         // if(res.ok){
         //     console.log(res.json());
