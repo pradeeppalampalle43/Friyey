@@ -904,3 +904,22 @@ filter: alpha(opacity=0);
 .image-preview-input-title {
   margin-left:2px;
 }
+.file{
+ 
+  padding-left: 25%;
+}
+.lable{
+  padding-top: 10px;
+  margin-left: 25%;
+
+}
+.imagepostlable{
+  background-image: url('../img/profile_image.png');
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 20%;
+
+}
