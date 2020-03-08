@@ -332,6 +332,7 @@ function createCard(data,userName,email) {
 
   cardWrapper.append(cardHeader); 
 
+if(data.images!=null){
 
   if(data.images[0].match(/\.(jpeg|jpg|gif|png)$/) != null)
   {
@@ -348,14 +349,7 @@ function createCard(data,userName,email) {
   }, false);
   }
 
-
-
-
-  
-
- 
-
-  
+} 
 
   var cardCommentinfo = document.createElement('div');
    cardCommentinfo.className = 'photo__info'; 
