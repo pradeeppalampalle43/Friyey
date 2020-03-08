@@ -114,7 +114,7 @@ function showCard1(data,userName,email) {
   // cardHeader.append(cardBookmark);
 
   cardWrapper.append(cardHeader); 
-
+  if(data.images!=null){
   if(data.images[0].match(/\.(jpeg|jpg|gif|png)$/) != null)
   {
   var cardImage = document.createElement('img');   // Create an <img> element.  
@@ -124,7 +124,7 @@ function showCard1(data,userName,email) {
   cardWrapper.appendChild(cardImage);
   }
 
-  
+}
 
   
 
@@ -368,6 +368,7 @@ if(data.images!=null){
     console.log("--------------postid-->",data.postId);
     setPostId(data.postId);
     postDetailsFetch(data,email,userName);
+    
     myFun();
   }, false);
 

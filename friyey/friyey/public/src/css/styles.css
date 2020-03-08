@@ -927,3 +927,8 @@ filter: alpha(opacity=0);
   padding-top: 20%;
 
 }
+.pagenotfound{
+  text-align: center;
+  font-weight: 600;
+  padding-top: 50%;
+}
