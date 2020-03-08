@@ -113,7 +113,7 @@ function showCard1(data,userName,email) {
   // cardBookmark.append(cardBookmark1);
   // cardHeader.append(cardBookmark);
 
-  // cardWrapper.append(cardHeader); 
+  cardWrapper.append(cardHeader); 
 
   if(data.images[0].match(/\.(jpeg|jpg|gif|png)$/) != null)
   {
@@ -327,8 +327,8 @@ function createCard(data,userName,email) {
   
   // cardBookmark1.src = data.images[0];
   // cardBookmark1.style.backgroundImage;  
-  // cardBookmark.append(cardBookmark1);
-  // cardHeader.append(cardBookmark);  
+  // // cardBookmark.append(cardBookmark1);
+  // cardHeader.append(cardBookmark1);  
 
   cardWrapper.append(cardHeader); 
 
