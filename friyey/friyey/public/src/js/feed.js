@@ -362,6 +362,7 @@ if(data.images!=null){
    var cardDescribe = document.createElement('div');
    cardDescribe.setAttribute('class', 'describe');
    cardDescribe.textContent = data.description; 
+   
    cardWrapper.appendChild(cardDescribe);
    cardDescribe.addEventListener('click',function(){
     console.log("--------------postid-->",data.postId);

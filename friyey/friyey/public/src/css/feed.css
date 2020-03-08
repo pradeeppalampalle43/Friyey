@@ -109,7 +109,7 @@
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .photo__add-comment-container textarea {
@@ -117,7 +117,7 @@
   border: 0;
   font-size: 14px;
   resize: none;
-  height: 20px;
+  height: 45px;
 }
 
 .photo__add-comment-container textarea:focus,

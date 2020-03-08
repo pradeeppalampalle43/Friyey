@@ -53,7 +53,7 @@ $(document).ready(function () {
         
         console.log('From cache', email);
         var dt = {"title": values.title,
-                  "description" : values.description,
+                  "description" : values.description.replace(/\n/g, '<br>\n'),
                   "emailId" : email                         
             }
         //data.append("postRequest", "{\n  \"companyName\": \"Audi\",\n  \"title\": ${values.title},\n  \"category\": \"job\",\n  \"description\": ${values.description},\n  \"phone\": \"9359606353\",\n  \"emailId\": \"siddhesh@gmail.com\"\n}");
