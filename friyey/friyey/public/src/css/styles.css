@@ -340,7 +340,7 @@ form .input-field{
     opacity: 0.3;  
     transform: scale(0.6);
     font-size: smaller;  
-    color: white;
+    color: #F9B54A;
     padding-top: 10%;
     
       
@@ -349,7 +349,7 @@ form .input-field{
     opacity: 0.9;
     
     font-size: smaller;  
-    color: white;
+    color: #F9B54A;
     padding-top: 10%;
     
   }
@@ -359,14 +359,14 @@ form .input-field{
     opacity: 0.3;       
     font-size: x-small;  
     font-weight: 100;
-    color: white;
+    color: #F9B54A;
     margin-top: -20%; 
     
     
   }
   #user_image{
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 30%;
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -374,7 +374,7 @@ form .input-field{
   }
   #user_text
 {
-  margin-top: 10px;
+  margin-top: 30%;
   margin-left: 20px;
 }
   
@@ -931,4 +931,28 @@ filter: alpha(opacity=0);
   text-align: center;
   font-weight: 600;
   padding-top: 50%;
+}
+#user_information{
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  
+}
+
+.usermaintag{
+  font-weight: bold;
+  font-size: large;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  color: #464855;
+  
+
+}
+.userbottomtag{
+  color: #F9B54A;
+  padding-left: 30px;
+  
+  
 }
