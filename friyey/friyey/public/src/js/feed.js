@@ -527,7 +527,7 @@ function updateUI1(data,userName,email) {
 function getAllPostsAndUpdatUI(userName,email){
 
   //checkIfUserTokenExists();
-  var url = 'http://139.59.81.245:8085/spaces/post/get/all';  
+  var url = 'https://v-card.app:8085/spaces/post/get/all';  
 
 var networkDataReceived = false;
 fetch(url)
@@ -562,7 +562,7 @@ checkIfUserTokenExists();
 
 function postDetailsFetch(data,userName,email){
 
-var url = 'http://139.59.81.245:8085/spaces/post/get';  
+var url = 'https://v-card.app:8085/spaces/post/get';  
 var postIdd = getPostId();
 const ps = {
   postId : postIdd
@@ -619,7 +619,7 @@ function checkIfUserTokenExists(){
   
 function postComment(email, userName,postIdd, commentpost, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, commentCnt, cardWrapper){
 
-  var url = 'http://139.59.81.245:8085/spaces/comment/post';    
+  var url = 'https://v-card.app:8085/spaces/comment/post';    
   const ps = {
     postId : postIdd,
     emailId : email,
@@ -680,7 +680,7 @@ function postComment(email, userName,postIdd, commentpost, cardFirstComment1, ca
 
   function postComment1(email, userName,postIdd, commentpost, cardFirstComment1, cardFirstComment11, cardFirstComment, cardText, cardCommentCount, commentCnt, cardWrapper){
 
-    var url = 'http://139.59.81.245:8085/spaces/comment/post';    
+    var url = 'https://v-card.app:8085/spaces/comment/post';    
     const ps = {
       postId : postIdd,
       emailId : email,

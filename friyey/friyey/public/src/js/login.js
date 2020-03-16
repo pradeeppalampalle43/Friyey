@@ -45,7 +45,7 @@ function checkIfUserTokenExists(){
 
 function login(userName, password){
     //checkIfUserTokenExists();
-    var url = 'http://139.59.81.245:8085/spaces/user/login';  
+    var url = 'https://v-card.app:8085/spaces/user/login';  
     const ps = {
         username : userName,
         password : password

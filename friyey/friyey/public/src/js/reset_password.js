@@ -32,7 +32,7 @@ $('#reset_pass_form').submit(function(event) {
 
 function resetPassword(email, old_password, new_password, confirm_password){
     //checkIfUserTokenExists();
-    var url = 'http://139.59.81.245:8085/spaces/user/changepass';  
+    var url = 'https://v-card.app:8085/spaces/user/changepass';  
     const ps = {
         emailId : email,
         oldPassword : old_password,

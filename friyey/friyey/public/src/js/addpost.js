@@ -67,7 +67,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             enctype: 'multipart/form-data',
-            url: "http://139.59.81.245:8085/spaces/post/create",
+            url: "https://v-card.app:8085/spaces/post/create",
             data: data,
             processData: false,
             contentType: false,

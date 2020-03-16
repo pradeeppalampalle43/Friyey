@@ -294,7 +294,7 @@
     return this
   }
 
-  // HTTP methods whose capitalization should be normalized
+  // httpss methods whose capitalization should be normalized
   var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT']
 
   function normalizeMethod(method) {
@@ -419,7 +419,7 @@
   self.fetch = function(input, init) {
     return new Promise(function(resolve, reject) {
       var request = new Request(input, init)
-      var xhr = new XMLHttpRequest()
+      var xhr = new XMLhttpsRequest()
 
       xhr.onload = function() {
         var options = {

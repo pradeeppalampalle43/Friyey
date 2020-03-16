@@ -74,7 +74,7 @@ userinfoshow(data,userName,email);
 function getAllPostsAndUpdatUserInfo(userName,email){
 
   //checkIfUserTokenExists();
-  var url = 'http://139.59.81.245:8085/spaces/user/info';  
+  var url = 'https://v-card.app:8085/spaces/user/info';  
   const ps = {
     email : email
   };
