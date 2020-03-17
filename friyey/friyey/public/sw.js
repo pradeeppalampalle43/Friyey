@@ -94,7 +94,7 @@ function printData(data){
 
 self.addEventListener('fetch', function (event) {
 
-  var url = 'http://139.59.81.245:8085/spaces/post/get';
+  var url = 'https://v-card.app:8085/spaces/post/get';
   if (event.request.url.indexOf(url) > -1) {
     event.respondWith(fetch(event.request)
       .then(function (res) {
